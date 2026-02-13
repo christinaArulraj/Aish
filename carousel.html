@@ -68,6 +68,10 @@ body {
 </head>
 
 <body>
+    <!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+    <source src="kutty.mp3" type="audio/mpeg">
+</audio>
 
 <h1>Our Love Story ❤️</h1>
 
@@ -80,7 +84,7 @@ body {
         This is where our beautiful journey started ❤️
     </div>
 </div>
-
+<button class="music-btn" onclick="toggleMusic()">🎵 Play / Pause Music</button>
 <div class="bottom-box">
     <p><strong>Will you show me how much you love me in person?</strong></p>
     <button class="yes" onclick="sayYes()">Yes ❤️</button>
@@ -153,6 +157,10 @@ if (!localStorage.getItem("musicPlaying")) {
 } else {
     music.play().catch(() => {});
 }
+/* 🎵 Auto play on first user interaction */
+window.addEventListener('click', function() {
+    music.play();
+}, { once: true });
 </script>
 
 </body>
