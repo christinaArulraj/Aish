@@ -54,6 +54,20 @@ if (!localStorage.getItem("musicPlaying")) {
 } else {
     music.play().catch(() => {});
 }
+
+// Fade in
+window.onload = function() {
+    document.body.style.opacity = "1";
+};
+
+// Redirect after 5 seconds
+setTimeout(() => {
+    document.body.style.opacity = "0";
+    setTimeout(() => {
+        window.location.href = "letter.html";
+    }, 100);
+}, 500);
+
 </script>
 
 </body>
