@@ -85,9 +85,10 @@ for (let i = 0; i < 20; i++) {
 
 /* Add Teddy Images */
 const teddyImages = [
-    "https://i.imgur.com/8Km9tLL.png",
-    "https://i.imgur.com/8Km9tLL.png",
-    "https://i.imgur.com/8Km9tLL.png"
+    "https://drive.google.com/file/d/1373u0AO4IelhQoFCttn4SwD_4S-LawlR/view?usp=drive_link",
+    "https://drive.google.com/file/d/1HnMh6dVWiHzNpSLjvITk1eS1dkf-IkKr/view?usp=drive_link",
+    "https://drive.google.com/file/d/1373u0AO4IelhQoFCttn4SwD_4S-LawlR/view?usp=drive_link",
+    "https://drive.google.com/file/d/1HnMh6dVWiHzNpSLjvITk1eS1dkf-IkKr/view?usp=drive_link",
 ];
 
 teddyImages.forEach((src, index) => {
@@ -98,6 +99,37 @@ teddyImages.forEach((src, index) => {
     img.style.left = (index % 2 === 0 ? "5%" : "80%");
     document.body.appendChild(img);
 });
+</script>
+<!-- Romantic Music -->
+<audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+// Fade in page
+window.addEventListener("load", () => {
+    document.body.classList.add("fade-in");
+});
+
+// Floating hearts
+for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+    document.body.appendChild(heart);
+}
+
+// Background Music Across Pages
+const music = document.getElementById("bgMusic");
+
+if (!localStorage.getItem("musicPlaying")) {
+    music.play().then(() => {
+        localStorage.setItem("musicPlaying", "true");
+    }).catch(() => {});
+} else {
+    music.play().catch(() => {});
+}
 </script>
 
 </body>
