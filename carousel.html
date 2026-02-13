@@ -3,6 +3,7 @@
 <head>
 <title>More Love ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
 <style>
 body {
     margin:0;
@@ -11,23 +12,23 @@ body {
     text-align:center;
     color:white;
 }
-
+ 
 .carousel-container {
     position:relative;
     max-width:500px;
     margin:40px auto;
 }
-
+ 
 .carousel-container img {
     width:100%;
     border-radius:15px;
 }
-
+ 
 .description {
     margin-top:10px;
     font-size:18px;
 }
-
+ 
 .arrow {
     position:absolute;
     top:50%;
@@ -39,10 +40,10 @@ body {
     padding:5px 15px;
     border-radius:50%;
 }
-
+ 
 .left { left:-50px; }
 .right { right:-50px; }
-
+ 
 .bottom-box {
     margin-top:40px;
     background:white;
@@ -53,7 +54,7 @@ body {
     margin-left:auto;
     margin-right:auto;
 }
-
+ 
 .bottom-box button {
     margin:10px;
     padding:10px 20px;
@@ -61,39 +62,53 @@ body {
     border-radius:8px;
     cursor:pointer;
 }
-
+ 
 .yes { background:#ff4d6d; color:white; }
 .no { background:#ccc; }
+ 
+.music-btn {
+    margin-top:20px;
+    background:white;
+    color:#ff4d6d;
+    padding:8px 18px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
 </style>
 </head>
-
+ 
 <body>
-    <!-- 🎵 Background Music -->
+ 
+<h1>Our Love Story ❤️</h1>
+ 
+<!-- 🎵 Background Music -->
 <audio id="bgMusic" loop>
     <source src="Urugi Urugi BGM Ringtone.mp3" type="audio/mpeg">
 </audio>
-
-<h1>Our Love Story ❤️</h1>
-
+ 
 <div class="carousel-container">
     <span class="arrow left" onclick="prevSlide()">❮</span>
-    <img id="carouselImage" src="/Users/christy/aish14/Aish">
+    <img id="carouselImage" src="https://picsum.photos/500/400?1">
     <span class="arrow right" onclick="nextSlide()">❯</span>
-
+ 
     <div class="description" id="description">
         This is where our beautiful journey started ❤️
     </div>
 </div>
+ 
 <button class="music-btn" onclick="toggleMusic()">🎵 Play / Pause Music</button>
+ 
 <div class="bottom-box">
     <p><strong>Will you show me how much you love me in person?</strong></p>
     <button class="yes" onclick="sayYes()">Yes ❤️</button>
     <button class="no" onclick="window.location.href='final.html'">No 🙈</button>
 </div>
-
+ 
 <script>
 let images = [
-    {src:"Ai/jpeg/iloveimg-converted (1)/robert-bri/robert-bri-0000.jpg", text:"Our first memory ❤️"},
+    {src:" /Users/christy/aish14/Aish/Ai/jpeg/iloveimg-converted (1)/robert-bri/robert-bri-0000.jpg", text:"Our first memory ❤️"},
     {src:"Ai/jpeg/iloveimg-converted (1)/2-bubu-angry-bubu-and-dudu.jpg", text:"Laughing together 😄"},
     {src:"Ai/jpeg/iloveimg-converted (1)/1-bubu-bubu-dudu.jpg", text:"Adventures we cherish ✨"},
     {src:"Ai/jpeg/iloveimg-converted (1)/22-dudu-on-top-bubu-hearts.jpg", text:"Moments of joy 💕"},
@@ -103,59 +118,46 @@ let images = [
     {src:"Ai/jpeg/iloveimg-converted (1)/There For You Sympathy GIF/There For You Sympathy GIF-0005.jpg", text:"My favorite person 💖"},
     {src:"Ai/jpeg/iloveimg-converted (1)/bubu-dudu-bubu/bubu-dudu-bubu-0006.jpg", text:"Every memory is special 💫"},
     {src:"Ai/jpeg/iloveimg-converted (1)/bubu-dudu-sseeyall (1)/bubu-dudu-sseeyall (1)-0000.jpg", text:"Our love story continues... 💞"},
-    {src:"Ai/jpeg/iloveimg-converted (1)/bubu-dudu/bubu-dudu-0000.jpg", text:"Our love story continues... 💞"}, 
+    {src:"Ai/jpeg/iloveimg-converted (1)/bubu-dudu/bubu-dudu-0000.jpg", text:"Our love story continues... 💞"}
 ];
-
+ 
 let index = 0;
-
+let music = document.getElementById("bgMusic");
+ 
 function updateSlide() {
     document.getElementById("carouselImage").src = images[index].src;
     document.getElementById("description").innerText = images[index].text;
 }
-
+ 
 function nextSlide() {
     index = (index + 1) % images.length;
     updateSlide();
 }
-
+ 
 function prevSlide() {
     index = (index - 1 + images.length) % images.length;
     updateSlide();
 }
-
+ 
 function sayYes() {
+    music.play();
     alert("I knew you would say yes ❤️");
 }
-
-// Fade in page
-window.addEventListener("load", () => {
-    document.body.classList.add("fade-in");
-});
-
-// Floating hearts
-for (let i = 0; i < 20; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = 4 + Math.random() * 4 + "s";
-    document.body.appendChild(heart);
+ 
+function toggleMusic() {
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
 }
-
-// Background Music Across Pages
-const music = document.getElementById("bgMusic");
-
-if (!localStorage.getItem("musicPlaying")) {
-    music.play().then(() => {
-        localStorage.setItem("musicPlaying", "true");
-    }).catch(() => {});
-} else {
-    music.play().catch(() => {});
-}
+ 
 /* 🎵 Auto play on first user interaction */
 window.addEventListener('click', function() {
     music.play();
 }, { once: true });
+ 
 </script>
-
+ 
 </body>
 </html>
