@@ -79,7 +79,7 @@ button:hover {
     <div id="login-section">
         <h2>Happy Valentine's Day ❤️</h2>
         <input type="text" id="username" placeholder="How do I call you?">
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="password" placeholder="How do you call me">
         <button onclick="login()">Login</button>
         <div class="error" id="error-msg"></div>
     </div>
@@ -92,8 +92,8 @@ function login() {
     const password = document.getElementById("password").value;
     const errorMsg = document.getElementById("error-msg");
 
-    const validUser = "rahul";
-    const validPass = "christyma";
+    const validUser = "mommy";
+    const validPass = "bby";
 
     if (username === validUser && password === validPass) {
         errorMsg.textContent = "";
@@ -102,7 +102,7 @@ function login() {
         window.location.href = "valentine.html";  
         
     } else {
-        errorMsg.textContent = "Marathuta la. Try again.";
+        errorMsg.textContent = "Marathutinga.Try again.";
     }
 }
 
